@@ -12,7 +12,7 @@ require Exporter;
 use strict;
 use vars qw($VERSION @ISA);
 @ISA = qw(Exporter);
-$VERSION = '0.18.1';
+$VERSION = '0.19';
 
 #------------------------------------------------------------------------------
 # new (OLE::Storage_Lite::PPS)
@@ -171,7 +171,7 @@ use IO::Handle;
 use Fcntl;
 use vars qw($VERSION @ISA);
 @ISA = qw(OLE::Storage_Lite::PPS Exporter);
-$VERSION = '0.18.1';
+$VERSION = '0.19';
 sub _savePpsSetPnt($$$);
 sub _savePpsSetPnt2($$$);
 #------------------------------------------------------------------------------
@@ -345,7 +345,7 @@ sub _saveHeader($$$$$) {
   my $iBdCnt = int(($iAll + $iBdCntW) / $iBlCnt) + ((($iAllW+$iBdCntW) % $iBlCnt)? 1: 0);
   my $i;
 
-  if ($iBdCnt > 109) {
+  if ($iBdCnt > $i1stBdL) {
     #0.1 Calculate BD count
     $iBlCnt--; #the BlCnt is reduced in the count of the last sect is used for a pointer the next Bl
     my $iBBleftover = $iAll - $i1stBdMax;
@@ -713,7 +713,7 @@ require Exporter;
 use strict;
 use vars qw($VERSION @ISA);
 @ISA = qw(OLE::Storage_Lite::PPS Exporter);
-$VERSION = '0.18.1';
+$VERSION = '0.19';
 #------------------------------------------------------------------------------
 # new (OLE::Storage_Lite::PPS::File)
 #------------------------------------------------------------------------------
@@ -801,7 +801,7 @@ require Exporter;
 use strict;
 use vars qw($VERSION @ISA);
 @ISA = qw(OLE::Storage_Lite::PPS Exporter);
-$VERSION = '0.18.1';
+$VERSION = '0.19';
 sub new ($$;$$$) {
     my($sClass, $sName, $raTime1st, $raTime2nd, $raChild) = @_;
     OLE::Storage_Lite::PPS::_new(
@@ -831,7 +831,7 @@ use Time::Local 'timegm';
 
 use vars qw($VERSION @ISA @EXPORT);
 @ISA = qw(Exporter);
-$VERSION = '0.18.1';
+$VERSION = '0.19';
 sub _getPpsSearch($$$$$;$);
 sub _getPpsTree($$$;$);
 #------------------------------------------------------------------------------
