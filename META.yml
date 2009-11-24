@@ -1,0 +1,13 @@
+--- #YAML:1.0
+name:                OLE-Storage_Lite
+version:             0.18
+abstract:            Read and write OLE storage files.
+license:             ~
+author:              
+    - Kawai Takanori (kwitknr@cpan.org)
+generated_by:        ExtUtils::MakeMaker version 6.44
+distribution_type:   module
+requires:     
+meta-spec:
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
