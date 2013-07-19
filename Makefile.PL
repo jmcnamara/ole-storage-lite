@@ -10,6 +10,9 @@ WriteMakefile(
     'NEEDS_LINKING' => 0,
     'PREREQ_PM'     => {},
     'dist'          => {COMPRESS => 'gzip --best', SUFFIX => 'gz'},
-
-
+    'META_MERGE'    => {
+                           resources => {
+                               repository  =>  'https://github.com/jmcnamara/ole-storage-lite',
+                           },
+                       },
 );
