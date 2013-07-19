@@ -1348,7 +1348,7 @@ sub OLEDate2Local {
 #------------------------------------------------------------------------------
 # LocalDate2OLE()
 #
-# Convert from a a localtime array to a Window FILETIME structure. FILETIME is
+# Convert from a localtime array to a Window FILETIME structure. FILETIME is
 # a 64-bit value representing the number of 100-nanosecond intervals since
 # January 1 1601.
 #
@@ -1516,11 +1516,11 @@ Dir pps (as No).
 
 =item Time1st
 
-Timestamp 1st in array ref as similar fomat of localtime.
+Timestamp 1st in array ref as similar format of localtime.
 
 =item Time2nd
 
-Timestamp 2nd in array ref as similar fomat of localtime.
+Timestamp 2nd in array ref as similar format of localtime.
 
 =item StartBlock
 
@@ -1619,7 +1619,7 @@ C<$sData> is data of the PPS.
 
     $oRoot = OLE::Storage_Lite::PPS::File->newFile($sName, $sFile);
 
-This function makes to use file handle for geting and storing data.
+This function makes to use file handle for getting and storing data.
 
 C<$sName> is name of the PPS.
 
