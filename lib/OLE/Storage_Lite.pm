@@ -1364,7 +1364,9 @@ sub LocalDate2OLE {
     return "\x00" x 8 unless $localtime;
 
     # Convert from localtime (actually gmtime) to seconds.
-    my $time = timegm( @{$localtime} );
+    my @localtimecopy = @{$localtime};
+    $localtimecopy[5] += 1900 unless $localtimecopy[5] > 99;
+    my $time = timegm( @localtimecopy );
 
     # Add the number of seconds between the 1601 and 1970 epochs.
     $time += 11644473600;
