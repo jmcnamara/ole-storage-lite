@@ -917,7 +917,7 @@ sub _initParse($) {
   #3. $sFile is a simple filename string
   elsif(!ref($sFile)) {
     $oIo = new IO::File;
-    $oIo->open("<$sFile") || return undef;
+    $oIo->open($sFile, "r") || return undef;
     binmode($oIo);
   }
   #4 Assume that if $sFile is a ref then it is a valid filehandle
