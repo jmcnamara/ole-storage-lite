@@ -984,9 +984,9 @@ sub _getPpsSearch($$$$$;$) {
   }
   $raDone->{$iNo} = undef;
   my $oPps = _getNthPps($iNo, $rhInfo, undef);
-#  if(defined(first {$_ eq $oPps->{Name}, @$raName})) {
-  if(($iCase && (defined(first {$_ =~/^\Q$oPps->{Name}\E$/i, @$raName}))) ||
-     (defined(first {$_ eq $oPps->{Name}, @$raName}))) {
+#  if(first {$_ eq $oPps->{Name}} @$raName) {
+  if(($iCase && (first {/^\Q$oPps->{Name}\E$/i} @$raName)) ||
+     (first {$_ eq $oPps->{Name}} @$raName)) {
     $oPps = _getNthPps($iNo, $rhInfo, $bData) if ($bData);
     @aRes = ($oPps);
   }
