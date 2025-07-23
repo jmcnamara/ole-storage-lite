@@ -1,6 +1,9 @@
 # OLE::Storage_Lite
 #  by Kawai, Takanori (Hippo2000) 2000.11.4, 8, 14
 # This Program is Still ALPHA version.
+
+use 5.006;
+
 #//////////////////////////////////////////////////////////////////////////////
 # OLE::Storage_Lite::PPS Object
 #//////////////////////////////////////////////////////////////////////////////
@@ -10,9 +13,8 @@
 package OLE::Storage_Lite::PPS;
 require Exporter;
 use strict;
-use vars qw($VERSION @ISA);
-@ISA = qw(Exporter);
-$VERSION = '0.22';
+our @ISA = qw(Exporter);
+our $VERSION = '0.22';
 
 #------------------------------------------------------------------------------
 # new (OLE::Storage_Lite::PPS)
@@ -169,9 +171,8 @@ use strict;
 use IO::File;
 use IO::Handle;
 use Fcntl;
-use vars qw($VERSION @ISA);
-@ISA = qw(OLE::Storage_Lite::PPS Exporter);
-$VERSION = '0.22';
+our @ISA = qw(OLE::Storage_Lite::PPS Exporter);
+our $VERSION = '0.22';
 sub _savePpsSetPnt($$$);
 sub _savePpsSetPnt2($$$);
 #------------------------------------------------------------------------------
@@ -711,9 +712,8 @@ sub _saveBbd($$$$)
 package OLE::Storage_Lite::PPS::File;
 require Exporter;
 use strict;
-use vars qw($VERSION @ISA);
-@ISA = qw(OLE::Storage_Lite::PPS Exporter);
-$VERSION = '0.22';
+our @ISA = qw(OLE::Storage_Lite::PPS Exporter);
+our $VERSION = '0.22';
 #------------------------------------------------------------------------------
 # new (OLE::Storage_Lite::PPS::File)
 #------------------------------------------------------------------------------
@@ -799,9 +799,8 @@ sub append ($$) {
 package OLE::Storage_Lite::PPS::Dir;
 require Exporter;
 use strict;
-use vars qw($VERSION @ISA);
-@ISA = qw(OLE::Storage_Lite::PPS Exporter);
-$VERSION = '0.22';
+our @ISA = qw(OLE::Storage_Lite::PPS Exporter);
+our $VERSION = '0.22';
 sub new ($$;$$$) {
     my($sClass, $sName, $raTime1st, $raTime2nd, $raChild) = @_;
     OLE::Storage_Lite::PPS::_new(
@@ -831,9 +830,9 @@ use IO::File;
 use List::Util qw(first);
 use Time::Local 'timegm';
 
-use vars qw($VERSION @ISA @EXPORT);
-@ISA = qw(Exporter);
-$VERSION = '0.22';
+our @ISA = qw(Exporter);
+our $VERSION = '0.22';
+our @EXPORT = ();
 sub _getPpsSearch($$$$$;$);
 sub _getPpsTree($$$;$);
 #------------------------------------------------------------------------------

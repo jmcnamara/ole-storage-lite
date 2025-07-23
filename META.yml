@@ -1,13 +1,23 @@
---- #YAML:1.0
-name:                OLE-Storage_Lite
-version:             0.18
-abstract:            Read and write OLE storage files.
-license:             ~
-author:              
-    - Kawai Takanori (kwitknr@cpan.org)
-generated_by:        ExtUtils::MakeMaker version 6.44
-distribution_type:   module
-requires:     
+---
+abstract: 'Read and write OLE storage files.'
+author:
+  - 'Kawai Takanori (kwitknr@cpan.org)'
+build_requires:
+  ExtUtils::MakeMaker: '0'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 7.76, CPAN::Meta::Converter version 2.150010'
+license: unknown
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
-    version: 1.3
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: OLE-Storage_Lite
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  perl: '5.006'
+version: '0.22'
+x_serialization_backend: 'CPAN::Meta::YAML version 0.020'
