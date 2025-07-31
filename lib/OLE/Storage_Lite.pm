@@ -11,9 +11,7 @@ use 5.006;
 # OLE::Storage_Lite::PPS
 #==============================================================================
 package OLE::Storage_Lite::PPS;
-require Exporter;
 use strict;
-our @ISA = qw(Exporter);
 our $VERSION = '0.22';
 
 #------------------------------------------------------------------------------
@@ -166,12 +164,11 @@ sub _savePpsWk($$)
 # OLE::Storage_Lite::PPS::Root
 #==============================================================================
 package OLE::Storage_Lite::PPS::Root;
-require Exporter;
 use strict;
 use IO::File;
 use IO::Handle;
 use Fcntl;
-our @ISA = qw(OLE::Storage_Lite::PPS Exporter);
+our @ISA = qw(OLE::Storage_Lite::PPS);
 our $VERSION = '0.22';
 sub _savePpsSetPnt($$$);
 sub _savePpsSetPnt2($$$);
@@ -710,9 +707,8 @@ sub _saveBbd($$$$)
 # OLE::Storage_Lite::PPS::File
 #==============================================================================
 package OLE::Storage_Lite::PPS::File;
-require Exporter;
 use strict;
-our @ISA = qw(OLE::Storage_Lite::PPS Exporter);
+our @ISA = qw(OLE::Storage_Lite::PPS);
 our $VERSION = '0.22';
 #------------------------------------------------------------------------------
 # new (OLE::Storage_Lite::PPS::File)
@@ -797,9 +793,8 @@ sub append ($$) {
 # new (OLE::Storage_Lite::PPS::Dir)
 #------------------------------------------------------------------------------
 package OLE::Storage_Lite::PPS::Dir;
-require Exporter;
 use strict;
-our @ISA = qw(OLE::Storage_Lite::PPS Exporter);
+our @ISA = qw(OLE::Storage_Lite::PPS);
 our $VERSION = '0.22';
 sub new ($$;$$$) {
     my($sClass, $sName, $raTime1st, $raTime2nd, $raChild) = @_;
@@ -822,7 +817,6 @@ sub new ($$;$$$) {
 # OLE::Storage_Lite
 #==============================================================================
 package OLE::Storage_Lite;
-require Exporter;
 
 use strict;
 use Carp;
@@ -830,9 +824,7 @@ use IO::File;
 use List::Util qw(first);
 use Time::Local 'timegm';
 
-our @ISA = qw(Exporter);
 our $VERSION = '0.22';
-our @EXPORT = ();
 sub _getPpsSearch($$$$$;$);
 sub _getPpsTree($$$;$);
 #------------------------------------------------------------------------------
