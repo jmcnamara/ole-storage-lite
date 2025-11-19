@@ -264,7 +264,7 @@ sub save($$;$$) {
   #2.Save Header
   $oThis->_saveHeader($rhInfo, $iSBDcnt, $iBBcnt, $iPPScnt);
 
-  #3.Make Small Data string (write SBD)
+  .Make Small Data string (write SBD)
   my $sSmWk = $oThis->_makeSmallData(\@aList, $rhInfo);
   $oThis->{Data} = $sSmWk;  #Small Datas become RootEntry Data
 
@@ -915,7 +915,7 @@ sub _initParse($) {
   #3. $sFile is a simple filename string
   elsif(!ref($sFile)) {
     $oIo = new IO::File;
-    $oIo->open("<$sFile") || return undef;
+    $oIo->open("$sFile", "r") || return undef;
     binmode($oIo);
   }
   #4 Assume that if $sFile is a ref then it is a valid filehandle
