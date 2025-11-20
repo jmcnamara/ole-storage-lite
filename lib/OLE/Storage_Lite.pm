@@ -230,7 +230,7 @@ sub save($$;$$) {
   elsif(!ref($sFile)) {
     if($sFile ne '-') {
         my $oIo = new IO::File;
-        $oIo->open(">$sFile") || return undef;
+        $oIo->open("$sFile", "w") || return undef;
         binmode($oIo);
         $rhInfo->{_FILEH_} = $oIo;
     }
@@ -264,7 +264,7 @@ sub save($$;$$) {
   #2.Save Header
   $oThis->_saveHeader($rhInfo, $iSBDcnt, $iBBcnt, $iPPScnt);
 
-  .Make Small Data string (write SBD)
+  #3.Make Small Data string (write SBD)
   my $sSmWk = $oThis->_makeSmallData(\@aList, $rhInfo);
   $oThis->{Data} = $sSmWk;  #Small Datas become RootEntry Data
 
@@ -1402,7 +1402,7 @@ OLE::Storage_Lite - Simple Class for OLE document interface.
     # From a filehandle object
     use IO::File;
     my $oIo = new IO::File;
-    $oIo->open("<iofile.xls");
+    $oIo->open("iofile.xls", "r");
     binmode($oIo);
     my $oOl = OLE::Storage_Lite->new($oFile);
 
@@ -1416,7 +1416,7 @@ OLE::Storage_Lite - Simple Class for OLE document interface.
 
     # To a filehandle object
     my $oIo = new IO::File;
-    $oIo->open(">iofile.xls");
+    $oIo->open("iofile.xls", "w");
     bimode($oIo);
     $oPps->save($oIo);
 
