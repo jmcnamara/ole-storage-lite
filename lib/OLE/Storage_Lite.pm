@@ -27,7 +27,7 @@ sub new ($$$$$$$$$$;$$) {
         ($iNo, $sNm, $iType, $iPrev, $iNext, $iDir, $raTime1st, $raTime2nd,
          $iStart, $iSize, $sData, $raChild);
   }
-  elsif($iType == OLE::Storage_Lite::PpsType_Dir()) { #DIRECTRY
+  elsif($iType == OLE::Storage_Lite::PpsType_Dir()) { #DIRECTORY
     return OLE::Storage_Lite::PPS::Dir->_new
         ($iNo, $sNm, $iType, $iPrev, $iNext, $iDir, $raTime1st, $raTime2nd,
          $iStart, $iSize, $sData, $raChild);
@@ -266,7 +266,7 @@ sub save($$;$$) {
 
   #3.Make Small Data string (write SBD)
   my $sSmWk = $oThis->_makeSmallData(\@aList, $rhInfo);
-  $oThis->{Data} = $sSmWk;  #Small Datas become RootEntry Data
+  $oThis->{Data} = $sSmWk;  #Small Data become RootEntry Data
 
   #4. Write BB
   my $iBBlk = $iSBDcnt;
@@ -275,7 +275,7 @@ sub save($$;$$) {
   #5. Write PPS
   $oThis->_savePps(\@aList, $rhInfo);
 
-  #6. Write BD and BDList and Adding Header informations
+  #6. Write BD and BDList and Adding Header information
   $oThis->_saveBbd($iSBDcnt, $iBBcnt, $iPPScnt,  $rhInfo);
 
   #7.Close File
@@ -494,7 +494,7 @@ sub _savePpsSetPnt2($$$)
       push @$raList, $aThis->[$iPos];
       $aThis->[$iPos]->{No} = $#$raList;
 
-#1.3.2 Devide a array into Previous,Next
+#1.3.2 Divide a array into Previous,Next
       $aThis->[$iPos]->{NextPps} = _savePpsSetPnt2(
             \@aNext, $raList, $rhInfo);
       $aThis->[$iPos]->{DirPps} = _savePpsSetPnt2($aThis->[$iPos]->{Child}, $raList, $rhInfo);
@@ -530,7 +530,7 @@ sub _savePpsSetPnt2s($$$)
       push @$raList, $aThis->[$iPos];
       $aThis->[$iPos]->{No} = $#$raList;
       my @aWk = @$aThis;
-#1.3.2 Devide a array into Previous,Next
+#1.3.2 Divide a array into Previous,Next
       my @aPrev = splice(@aWk, 0, $iPos);
       my @aNext = splice(@aWk, 1, $iCnt - $iPos -1);
       $aThis->[$iPos]->{PrevPps} = _savePpsSetPnt2(
@@ -569,7 +569,7 @@ sub _savePpsSetPnt($$$)
       push @$raList, $aThis->[$iPos];
       $aThis->[$iPos]->{No} = $#$raList;
       my @aWk = @$aThis;
-#1.3.2 Devide a array into Previous,Next
+#1.3.2 Divide a array into Previous,Next
       my @aPrev = splice(@aWk, 0, $iPos);
       my @aNext = splice(@aWk, 1, $iCnt - $iPos -1);
       $aThis->[$iPos]->{PrevPps} = _savePpsSetPnt(
@@ -608,7 +608,7 @@ sub _savePpsSetPnt1($$$)
       push @$raList, $aThis->[$iPos];
       $aThis->[$iPos]->{No} = $#$raList;
       my @aWk = @$aThis;
-#1.3.2 Devide a array into Previous,Next
+#1.3.2 Divide a array into Previous,Next
       my @aPrev = splice(@aWk, 0, $iPos);
       my @aNext = splice(@aWk, 1, $iCnt - $iPos -1);
       $aThis->[$iPos]->{PrevPps} = _savePpsSetPnt(
@@ -994,7 +994,7 @@ sub _getPpsSearch($$$$$;$) {
   return @aRes;
 }
 #===================================================================
-# Get Header Info (BASE Informain about that file)
+# Get Header Info (BASE Information about that file)
 #===================================================================
 sub _getHeaderInfo($){
   my($FILE) = @_;
@@ -1361,9 +1361,9 @@ sub LocalDate2OLE {
     return "\x00" x 8 unless $localtime;
 
     # Convert from localtime (actually gmtime) to seconds.
-    my @localtimecopy = @{$localtime};
-    $localtimecopy[5] += 1900 unless $localtimecopy[5] > 99;
-    my $time = timegm( @localtimecopy );
+    my @localtime_copy = @{$localtime};
+    $localtime_copy[5] += 1900 unless $localtime_copy[5] > 99;
+    my $time = timegm( @localtime_copy );
 
     # Add the number of seconds between the 1601 and 1970 epochs.
     $time += 11644473600;
@@ -1417,7 +1417,7 @@ OLE::Storage_Lite - Simple Class for OLE document interface.
     # To a filehandle object
     my $oIo = new IO::File;
     $oIo->open("iofile.xls", "w");
-    bimode($oIo);
+    binmode($oIo);
     $oPps->save($oIo);
 
 
