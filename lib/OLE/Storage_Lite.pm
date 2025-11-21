@@ -230,7 +230,7 @@ sub save($$;$$) {
   elsif(!ref($sFile)) {
     if($sFile ne '-') {
         my $oIo = new IO::File;
-        $oIo->open("$sFile", "w") || return undef;
+        $oIo->open($sFile, "w") || return undef;
         binmode($oIo);
         $rhInfo->{_FILEH_} = $oIo;
     }
@@ -915,7 +915,7 @@ sub _initParse($) {
   #3. $sFile is a simple filename string
   elsif(!ref($sFile)) {
     $oIo = new IO::File;
-    $oIo->open("$sFile", "r") || return undef;
+    $oIo->open($sFile, "r") || return undef;
     binmode($oIo);
   }
   #4 Assume that if $sFile is a ref then it is a valid filehandle
