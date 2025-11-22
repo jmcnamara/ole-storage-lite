@@ -12,7 +12,7 @@ use 5.006;
 #==============================================================================
 package OLE::Storage_Lite::PPS;
 use strict;
-our $VERSION = '0.22';
+our $VERSION = '0.24';
 
 #------------------------------------------------------------------------------
 # new (OLE::Storage_Lite::PPS)
@@ -169,7 +169,7 @@ use IO::File;
 use IO::Handle;
 use Fcntl;
 our @ISA = qw(OLE::Storage_Lite::PPS);
-our $VERSION = '0.22';
+our $VERSION = '0.24';
 sub _savePpsSetPnt($$$);
 sub _savePpsSetPnt2($$$);
 #------------------------------------------------------------------------------
@@ -709,7 +709,7 @@ sub _saveBbd($$$$)
 package OLE::Storage_Lite::PPS::File;
 use strict;
 our @ISA = qw(OLE::Storage_Lite::PPS);
-our $VERSION = '0.22';
+our $VERSION = '0.24';
 #------------------------------------------------------------------------------
 # new (OLE::Storage_Lite::PPS::File)
 #------------------------------------------------------------------------------
@@ -795,7 +795,7 @@ sub append ($$) {
 package OLE::Storage_Lite::PPS::Dir;
 use strict;
 our @ISA = qw(OLE::Storage_Lite::PPS);
-our $VERSION = '0.22';
+our $VERSION = '0.24';
 sub new ($$;$$$) {
     my($sClass, $sName, $raTime1st, $raTime2nd, $raChild) = @_;
     OLE::Storage_Lite::PPS::_new(
@@ -824,7 +824,7 @@ use IO::File;
 use List::Util qw(first);
 use Time::Local 'timegm';
 
-our $VERSION = '0.22';
+our $VERSION = '0.24';
 sub _getPpsSearch($$$$$;$);
 sub _getPpsTree($$$;$);
 #------------------------------------------------------------------------------

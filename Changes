@@ -1,5 +1,10 @@
 Revision history for Perl extension OLE::Storage_Lite.
 
+0.24 Fri Nov 21 2025
+
+    ! Fix for versions in package.
+
+
 0.23 Fri Nov 21 2025
 
     ! Fixed issue where files with leading or trailing whitespace
