@@ -4,51 +4,51 @@
 #
 # Tests for OLE::Storage_Lites internal date handling functions.
 #
-# reverse('©'), May 2007, John McNamara, jmcnamara@cpan.org
-#
 use strict;
 
 use OLE::Storage_Lite;
 use Test::More tests => 198;
 
-my @testdata;
+my @test_data;
 
-# Read the test data from the end of the file...
-while (<DATA>) {
+# Read the test data from the end of the file.
+while ( <DATA> ) {
     next unless /\S/;
     chomp;
 
     s/# //;
     my @data = split /\s+/, $_, 4;
-    push @testdata, \@data;
+    push @test_data, \@data;
 }
 
-# Run the tests...
-for my $test (@testdata) {
+# Run the tests.
+for my $test ( @test_data ) {
     my $unix_seconds       = $test->[0];
     my $expected_localtime = $test->[1];
     my $expected_oletime   = $test->[2];
     my $caption            = $test->[3];
 
 
-    # Test LocalDate2OLE
-    $expected_localtime = [split /-/, $expected_localtime];
+    # Test LocalDate2OLE.
 
-    my $got_oletime = OLE::Storage_Lite::LocalDate2OLE($expected_localtime);
-       $got_oletime = uc unpack "H*", $got_oletime;
+    $expected_localtime = [ split /-/, $expected_localtime ];
 
-    is($got_oletime, $expected_oletime, " \tLocalDate2OLE: $caption");
+    my $got_oletime = OLE::Storage_Lite::LocalDate2OLE( $expected_localtime );
+    $got_oletime = uc unpack "H*", $got_oletime;
 
-    # Test LocalDate2OLE
+    is( $got_oletime, $expected_oletime, " \tLocalDate2OLE: $caption" );
+
+    # Test LocalDate2OLE.
+
     $expected_oletime = pack 'H*', $expected_oletime;
 
-    my @got_localtime = OLE::Storage_Lite::OLEDate2Local($expected_oletime);
-       @got_localtime = @got_localtime[0..5];
+    my @got_localtime = OLE::Storage_Lite::OLEDate2Local( $expected_oletime );
+    @got_localtime = @got_localtime[ 0 .. 5 ];
 
-    my $got_localtime   = join '-', @got_localtime[0..5];
+    my $got_localtime = join '-', @got_localtime[ 0 .. 5 ];
     $expected_localtime = join '-', @$expected_localtime;
 
-    is($got_localtime, $expected_localtime, " \tOLEDate2Local: $caption");
+    is( $got_localtime, $expected_localtime, " \tOLEDate2Local: $caption" );
 
 }
 
