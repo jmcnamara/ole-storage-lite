@@ -838,6 +838,7 @@ use constant {
   DataSizeSmall  => 0x1000,
   LongIntSize    => 4,
   PpsSize        => 0x80,
+  HeaderSize     => 0x200,
   # 0xFFFFFFFC : BDList, 0xFFFFFFFD : BBD,
   # 0xFFFFFFFE: End of Chain 0xFFFFFFFF : unused
   NormalBlockEnd => 0xFFFFFFFC,
@@ -1097,7 +1098,7 @@ sub _getBbdInfo($) {
   my $iBigBlkSize = $rhInfo->{_BIG_BLOCK_SIZE};
   my $iGetCnt;
   my $sWk;
-  my $i1stCnt = int(($iBigBlkSize - 0x4C) / OLE::Storage_Lite::LongIntSize());
+  my $i1stCnt = int((OLE::Storage_Lite::HeaderSize() - 0x4C) / OLE::Storage_Lite::LongIntSize());
   my $iBdlCnt = int($iBigBlkSize / OLE::Storage_Lite::LongIntSize()) - 1;
 
 #1. 1st BDlist
